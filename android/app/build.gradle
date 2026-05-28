@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "com.nazguard.omniguard"
+    
     // Biz boya e'lon qilgan global versiyalarni shu yerga bog'laymiz
     compileSdkVersion rootProject.ext.compileSdkVersion
     
