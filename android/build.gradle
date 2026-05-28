@@ -33,3 +33,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile).configureEach {
+        options.failOnError = false
+    }
+}

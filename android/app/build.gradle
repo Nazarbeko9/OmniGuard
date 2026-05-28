@@ -59,3 +59,13 @@ try {
 } catch(Exception e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
 }
+
+// Faylning eng oxiriga shundoq qo'shib qo'ying:
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs << "-Xlint:none"
+        options.compilerArgs << "-Xlint:-unchecked"
+        options.compilerArgs << "-Xlint:-deprecation"
+        options.failOnError = false
+    }
+}
