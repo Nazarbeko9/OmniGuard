@@ -41,5 +41,4 @@ jobs:
       - name: Build Android Debug APK
         run: |
           cd android
-          # -x lint buyrug'i kod ichidagi plugin xatolarini e'tiborsiz qoldirib, majburlab APK faylni chiqarib beradi!
-          ./gradlew assembleDebug -x lint --continue
+          ./gradlew assembleDebug --continue
