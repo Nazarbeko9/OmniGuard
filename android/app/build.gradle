@@ -4,14 +4,6 @@ android {
     namespace "com.nazguard.omniguard"
     compileSdk rootProject.ext.compileSdkVersion
 
-    options.compilerArgs << "-Xlint:-unchecked" << "-Xlint:-deprecation"
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:none"
-            options.failOnError = false // Xato bo'lsa ham buildni to'xtatmaydi!
-        }
-    }
-    
     defaultConfig {
         applicationId "com.nazguard.omniguard"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -20,8 +12,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
-             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
-             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
@@ -30,6 +20,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+// ✅ android{} dan TASHQARIDA bo'lishi kerak
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:none" << "-Xlint:-unchecked" << "-Xlint:-deprecation"
+        options.failOnError = false
     }
 }
 
