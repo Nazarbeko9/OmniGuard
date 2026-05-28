@@ -35,7 +35,8 @@ task clean(type: Delete) {
 }
 
 gradle.projectsEvaluated {
-    tasks.withType(JavaCompile).configureEach {
-        options.failOnError = false
-    }
+
+tasks.withType(JavaCompile).configureEach {
+    options.failOnError = false
+}
 }

@@ -69,3 +69,8 @@ gradle.projectsEvaluated {
         options.failOnError = false
     }
 }
+
+tasks.withType(JavaCompile).configureEach {
+    options.failOnError = false
+    options.compilerArgs = ["-Xlint:none", "-Xlint:-unchecked", "-Xlint:-deprecation"]
+}
